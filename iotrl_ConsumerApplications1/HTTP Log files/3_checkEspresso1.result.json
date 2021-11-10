@@ -1,0 +1,33 @@
+[
+    {
+      "interactionCounter": 1,
+      "operation": "readproperty",
+      "affordance": {
+        "type": "property",
+        "name": "property affordance"
+      },
+      "payload": "Ready",
+      "recipient": {
+        "type": "thing",
+        "thingId": "de:tum:ei:esi:fp:coffee:1-3",
+        "thingTitle": "Virtual-Coffee-Machine_1_3"
+      },
+      "messageId": 1,
+      "timeStamp": "2021-06-30T17:01:52.829Z"
+    },
+    {
+      "interactionCounter": 2,
+      "operation": "invokeaction",
+      "affordance": {
+        "type": "action",
+        "name": "action affordance"
+      },
+      "recipient": {
+        "type": "thing",
+        "thingId": "de:tum:ei:esi:fp:coffee:1-3",
+        "thingTitle": "Virtual-Coffee-Machine_1_3"
+      },
+      "messageId": 2,
+      "timeStamp": "2021-06-30T17:01:52.853Z"
+    }
+  ]

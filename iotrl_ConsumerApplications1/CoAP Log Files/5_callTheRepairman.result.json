@@ -1,0 +1,33 @@
+[
+  {
+    "interactionCounter": 1,
+    "operation": "subscribeevent",
+    "affordance": {
+      "type": "event",
+      "name": "event affordance"
+    },
+    "payload": "eu cupid",
+    "recipient": {
+      "type": "thing",
+      "thingId": "de:tum:ei:esi:fp:coffee:2-5",
+      "thingTitle": "Virtual-Coffee-Machine_2_5"
+    },
+    "messageId": 1,
+    "timeStamp": "2021-06-30T20:42:39.335Z"
+  },
+  {
+    "interactionCounter": 2,
+    "operation": "invokeaction",
+    "affordance": {
+      "type": "action",
+      "name": "action affordance"
+    },
+    "recipient": {
+      "type": "thing",
+      "thingId": "de:tum:ei:esi:fp:coffee:2-5",
+      "thingTitle": "Virtual-Coffee-Machine_2_5"
+    },
+    "messageId": 2,
+    "timeStamp": "2021-06-30T20:42:44.275Z"
+  }
+]

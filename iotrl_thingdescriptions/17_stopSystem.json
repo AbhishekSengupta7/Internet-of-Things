@@ -1,0 +1,14 @@
+ [
+        {
+          "op": ["invokeaction"],
+          "href": "http://example.org/robot1/state/stopSystem",
+          "htv:methodName": "POST",
+          "contentType": "application/json"
+        },
+        {
+          "op": ["invokeaction"],
+          "href": "http://example.org/robot2/state/stopSystem",
+          "htv:methodName": "POST",
+          "contentType": "application/json"
+        }
+ ]

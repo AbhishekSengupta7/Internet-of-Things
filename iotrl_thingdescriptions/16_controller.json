@@ -1,0 +1,85 @@
+{
+  "@context": "https://www.w3.org/2019/wot/td/v1",
+  "title": "Controlling 2 Robots",
+  "description": "controller that uses two robots as part of a production chain",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "in": "header"
+    }
+  },
+  "security": [
+    "basic_sc"
+  ],
+  "base": "http://example.org/controller",
+  "actions": {
+    "startSystem": {
+      "title": "Enable",
+      "description": "Enables the robots using the state property",
+      "idempotent": false,
+      "safe": false,
+      "forms": [
+        {
+          "href": "/robot1/startSystem",
+          "op": [
+            "invokeaction"
+          ],
+          "contentType": "application/json",
+          "htv:methodName": "POST"
+        },
+        {
+          "href": "/robot2/startSystem",
+          "op": [
+            "invokeaction"
+          ],
+          "contentType": "application/json",
+          "htv:methodName": "POST"
+        }
+      ]
+    },
+    "stopSystem": {
+      "title": "Disable",
+      "description": "Disables the robots using the state property",
+      "idempotent": false,
+      "safe": false,
+      "forms": [
+        {
+          "href": "/robot1/stopSystem",
+          "op": [
+            "invokeaction"
+          ],
+          "contentType": "application/json",
+          "htv:methodName": "POST"
+        },
+        {
+          "href": "/robot2/stopSystem",
+          "op": [
+            "invokeaction"
+          ],
+          "contentType": "application/json",
+          "htv:methodName": "POST"
+        }
+      ]
+    },
+    "action1": {
+      "title": "Move robots",
+      "description": "Internally moves robot1 to its home position and moves the robot2 to position x:1,y:10,z:0",
+      "idempotent": false,
+      "safe": false,
+      "forms": [
+        {
+          "href": "/robot1/action1",
+          "op": "invokeaction",
+          "contentType": "application/json",
+          "htv:methodName": "POST"
+        },
+        {
+          "href": "/robot2/action1",
+          "op": "invokeaction",
+          "contentType": "application/json",
+          "htv:methodName": "POST"
+        }
+      ]
+    }
+  }
+}

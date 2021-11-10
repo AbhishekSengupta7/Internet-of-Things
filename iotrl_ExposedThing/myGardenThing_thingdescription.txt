@@ -1,0 +1,162 @@
+{
+  "@context": "https://www.w3.org/2019/wot/td/v1",
+  "title": "myGardenThing",
+  "description": "Garden watering prediction thing",
+  "securityDefinitions": {
+    "nosec_sc": {
+      "scheme": "nosec"
+    }
+  },
+  "security": "nosec_sc",
+  "@type": "",
+  "id": "urn:dev:ops:Mything-001",
+  "actions": {
+    "startSprinkler": {
+      "title": "Start sprinkler",
+      "description": "Starts the sprinkler. Takes no input or delivers output",
+      "forms": [
+        {
+          "contentType": "application/json",
+          "href": "http://localhost:8080/myGardenThing/startSprinkler",
+          "htv:methodName": "POST",
+          "op": [
+            "invokeaction"
+          ]
+        }
+      ],
+      "idempotent": false,
+      "safe": false
+    },
+    "stopSprinkler": {
+      "title": "Stop sprinkler",
+      "description": "Stops the sprinkler. Takes no input or delivers output",
+      "forms": [
+        {
+          "contentType": "application/json",
+          "href": "http://localhost:8080/myGardenThing/stopSprinkler",
+          "htv:methodName": "POST",
+          "op": [
+            "invokeaction"
+          ]
+        }
+      ],
+      "idempotent": false,
+      "safe": false
+    }
+  },
+  "properties": {
+    "temperature": {
+      "title": "temperature",
+      "description": "This is a number value between -20 and 60 Celcius that follows a periodic curve with a period of 1 day",
+      "minimum": -20.0,
+      "maximum": 60.0,
+      "observable": false,
+      "readOnly": true,
+      "type": "number",
+      "unit": "Celcius",
+      "writeOnly": false,
+      "forms": [
+        {
+          "contentType": "application/json",
+          "href": "http://localhost:8080/myGardenThing/temperature",
+          "op": [
+            "readproperty"
+          ]
+        }
+      ]
+    },
+    "soilHumidity": {
+      "title": "soilHumidity",
+      "description": "This is a number value with a unit of percentage between 0 and 100",
+      "maximum": 100.0,
+      "minimum": 0.0,
+      "observable": true,
+      "readOnly": true,
+      "type": "number",
+      "unit": "%",
+      "writeOnly": false,
+      "forms": [
+        {
+          "contentType": "application/json",
+          "href": "http://localhost:8080/myGardenThing/soilHumidity",
+          "op": [
+            "readproperty",
+            "observeproperty"
+          ]
+        }
+      ]
+    },
+    "humidityThreshold": {
+      "title": "humidityThreshold",
+      "description": "This sets the threshold when the watering starts automatically",
+      "maximum": 100.0,
+      "minimum": 0.0,
+      "observable": false,
+      "readOnly": false,
+      "type": "number",
+      "unit": "%",
+      "writeOnly": false,
+      "forms": [
+        {
+          "contentType": "application/json",
+          "href": "http://localhost:8080/myGardenThing/humidityThreshold",
+          "op": [
+            "readproperty",
+            "writeproperty"
+          ]
+        }
+      ]
+    },
+    "state": {
+      "description": "state",
+      "title": "This is a string value that can be set to manualWatering or automaticWatering.",
+      "readOnly": false,
+      "writeOnly": false,
+      "type": "string",
+      "forms": [
+        {
+          "contentType": "application/json",
+          "href": "http://localhost:8080/myGardenThing/state",
+          "op": [
+            "readproperty",
+            "writeproperty"
+          ]
+        }
+      ],
+      "enum": [
+        "manualWatering",
+        "automaticWatering"
+      ]
+    }
+  },
+  "events": {
+    "tooDry": {
+      "title": "Too dry event",
+      "description": "fired when the humidity reaches the set humidityThreshold",
+      "forms": [
+        {
+          "contentType": "application/json",
+          "href": "http://localhost:8080/myGardenThing/tooDry",
+          "op": [
+            "subscribeevent"
+          ],
+          "subprotocol": "longpoll"
+        }
+      ]
+    },
+    "tooWet": {
+      "title": "Too wet event",
+      "description": "fired when the humidity reaches 90 percent",
+      "forms": [
+        {
+          "contentType": "application/json",
+          "href": "http://localhost:8080/myGardenThing/tooWet",
+          "op": [
+            "subscribeevent"
+          ],
+          "subprotocol": "longpoll"
+        }
+      ]
+    }
+  }
+}

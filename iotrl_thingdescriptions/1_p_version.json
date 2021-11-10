@@ -1,0 +1,8 @@
+{
+  "@context": "https://www.w3.org/2019/wot/td/v1",
+  "title": "version verification",
+  "description": "The version of the thing",
+  "version": {
+    "instance": "10.21.2"
+  }
+}

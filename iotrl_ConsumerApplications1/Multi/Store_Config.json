@@ -1,0 +1,37 @@
+[
+	[
+	 "http://esiremotelab.esi.ei.tum.de:8080/Virtual-Coffee-Machine_1_1",
+	 "http://esiremotelab.esi.ei.tum.de:8080/Virtual-Coffee-Machine_1_2",
+	 "http://esiremotelab.esi.ei.tum.de:8080/Virtual-Coffee-Machine_1_3",
+	 "http://esiremotelab.esi.ei.tum.de:8080/Virtual-Coffee-Machine_1_4",
+	 "http://esiremotelab.esi.ei.tum.de:8080/Virtual-Coffee-Machine_1_5",
+	 "http://esiremotelab.esi.ei.tum.de:8080/Virtual-Coffee-Machine_1_6"
+	],
+	[
+	 "coap://esiremotelab.esi.ei.tum.de:5683/Virtual-Coffee-Machine_2_1",
+	 "coap://esiremotelab.esi.ei.tum.de:5683/Virtual-Coffee-Machine_2_2",
+	 "coap://esiremotelab.esi.ei.tum.de:5683/Virtual-Coffee-Machine_2_3",
+	 "coap://esiremotelab.esi.ei.tum.de:5683/Virtual-Coffee-Machine_2_4",
+	 "coap://esiremotelab.esi.ei.tum.de:5683/Virtual-Coffee-Machine_2_5",
+	 "coap://esiremotelab.esi.ei.tum.de:5683/Virtual-Coffee-Machine_2_6"
+	],
+	
+	[
+	 "http://esiremotelab.esi.ei.tum.de:8080/Virtual-Coffee-Machine_1_7",
+	 "http://esiremotelab.esi.ei.tum.de:8080/Virtual-Coffee-Machine_1_8",
+	 "http://esiremotelab.esi.ei.tum.de:8080/Virtual-Coffee-Machine_1_9",
+	 "coap://esiremotelab.esi.ei.tum.de:5683/Virtual-Coffee-Machine_2_7",
+	 "coap://esiremotelab.esi.ei.tum.de:5683/Virtual-Coffee-Machine_2_8",
+	 "coap://esiremotelab.esi.ei.tum.de:5683/Virtual-Coffee-Machine_2_9"
+	],
+	
+	[
+	 "http://esiremotelab.esi.ei.tum.de:8080/Virtual-Coffee-Machine_1_10",
+	 "http://esiremotelab.esi.ei.tum.de:8080/Virtual-Coffee-Machine_1_11",
+	 "http://esiremotelab.esi.ei.tum.de:8080/Virtual-Coffee-Machine_1_12",	
+	 "coap://esiremotelab.esi.ei.tum.de:5683/Virtual-Coffee-Machine_2_10",
+	 "coap://esiremotelab.esi.ei.tum.de:5683/Virtual-Coffee-Machine_2_11",
+	 "coap://esiremotelab.esi.ei.tum.de:5683/Virtual-Coffee-Machine_2_12"
+	]
+
+]

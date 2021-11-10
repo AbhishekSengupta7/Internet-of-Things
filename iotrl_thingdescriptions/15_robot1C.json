@@ -1,0 +1,503 @@
+{
+  "@context": [
+    "https://www.w3.org/2019/wot/td/v1",
+    {
+      "cov": "http://www.example.org/coap-binding#"
+    }
+  ],
+  "title": "Basic Security",
+  "description": "Robot design",
+  "securityDefinitions": {
+    "bearer_sc": {
+      "in": "header",
+      "scheme": "bearer",
+      "format": "jwt",
+      "alg": "ES256"
+    }
+  },
+  "security": [
+    "bearer_sc"
+  ],
+  "base": "http://example.org/robot1",
+  "properties": {
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "readOnly": true,
+      "writeOnly": false,
+      "observable": true,
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "maxProperties": 3,
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 180
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 90
+        },
+        "z": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 20
+        }
+      },
+      "forms": [
+        {
+          "op": [
+            "observeproperty"
+          ],
+          "href": "/locationobserve",
+          "subprotocol": "longpoll",
+          "htv:methodName": "GET",
+          "contentType": "application/json"
+        },
+        {
+          "op": [
+            "readproperty"
+          ],
+          "href": "/locationread",
+          "contentType": "application/json",
+          "htv:methodName": "GET"
+        },
+        {
+          "op": [
+            "observeproperty"
+          ],
+          "href": "coaps://192.168.0.101:5683/robot1/locationobserve",
+          "contentType": "application/cbor",
+          "security": [
+            "bearer_sc"
+          ],
+          "cov:methodName": "GET",
+          "subprotocol": "cov:observe"
+        },
+        {
+          "op": [
+            "readproperty"
+          ],
+          "href": "coaps://192.168.0.101:5683/robot1/locationread",
+          "contentType": "application/cbor",
+          "security": [
+            "bearer_sc"
+          ],
+          "cov:methodName": "GET"
+        }
+      ]
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "writeOnly": false,
+      "readonly": false,
+      "forms": [
+        {
+          "op": [
+            "writeproperty"
+          ],
+          "href": "/state",
+          "htv:methodName": "PUT",
+          "contentType": "application/json"
+        },
+        {
+          "op": [
+            "readproperty"
+          ],
+          "href": "/state",
+          "htv:methodName": "GET",
+          "contentType": "application/json"
+        },
+        {
+          "op": [
+            "writeproperty"
+          ],
+          "href": "coaps://192.168.0.101:5683/robot1/state",
+          "contentType": "application/cbor",
+          "cov:methodName": "PUT",
+          "security": [
+            "bearer_sc"
+          ]
+        },
+        {
+          "op": [
+            "readproperty"
+          ],
+          "href": "coaps://192.168.0.101:5683/robot1/state",
+          "contentType": "application/cbor",
+          "cov:methodName": "GET",
+          "security": [
+            "bearer_sc"
+          ]
+        }
+      ]
+    },
+    "updateFrequency": {
+      "type": "number",
+      "enum": [
+        1,
+        10,
+        100
+      ],
+      "writeOnly": false,
+      "readonly": false,
+      "unit": "Hertz",
+      "forms": [
+        {
+          "op": [
+            "writeproperty"
+          ],
+          "href": "/updateFrequency",
+          "htv:methodName": "PUT",
+          "contentType": "application/json"
+        },
+        {
+          "op": [
+            "readproperty"
+          ],
+          "href": "/updateFrequency",
+          "htv:methodName": "GET",
+          "contentType": "application/json"
+        },
+        {
+          "op": [
+            "writeproperty"
+          ],
+          "href": "coaps://192.168.0.101:5683/robot1/updateFrequency",
+          "contentType": "application/cbor",
+          "cov:methodName": "PUT",
+          "security": [
+            "bearer_sc"
+          ]
+        },
+        {
+          "op": [
+            "readproperty"
+          ],
+          "href": "coaps://192.168.0.101:5683/robot1/updateFrequency",
+          "contentType": "application/cbor",
+          "cov:methodName": "GET",
+          "security": [
+            "bearer_sc"
+          ]
+        }
+      ]
+    }
+  },
+  "forms": [
+    {
+      "op": [
+        "readallproperties"
+      ],
+      "href": "/readallproperties",
+      "htv:methodName": "GET",
+      "contentType": "application/json"
+    },
+    {
+      "op": [
+        "readallproperties"
+      ],
+      "href": "coaps://192.168.0.101:5683/robot1/readallproperties",
+      "contentType": "application/cbor",
+      "cov:methodName": "GET",
+      "security": [
+        "bearer_sc"
+      ]
+    }
+  ],
+  "actions": {
+    "goHome": {
+      "title": "goHome",
+      "description": "moves a robot to a pre-programmed location no matter the input",
+      "forms": [
+        {
+          "href": "/goHome",
+          "op": [
+            "invokeaction"
+          ],
+          "contentType": "application/json",
+          "htv:methodName": "POST"
+        },
+        {
+          "href": "coaps://192.168.0.101:5683/robot1/goHome",
+          "contentType": "application/cbor",
+          "security": [
+            "bearer_sc"
+          ],
+          "op": [
+            "invokeaction"
+          ],
+          "cov:methodName": "POST"
+        }
+      ],
+      "safe": false,
+      "idempotent": true
+    },
+    "goTo": {
+      "title": "goTo",
+      "description": "goes to the same location from any initial state",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "maxProperties": 3,
+        "properties": {
+          "x": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 180
+          },
+          "y": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 90
+          },
+          "z": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 20
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "z"
+        ]
+      },
+      "forms": [
+        {
+          "href": "/goTo",
+          "op": [
+            "invokeaction"
+          ],
+          "contentType": "application/json",
+          "htv:methodName": "POST"
+        },
+        {
+          "href": "coaps://192.168.0.101:5683/robot1/goTo",
+          "contentType": "application/cbor",
+          "security": [
+            "bearer_sc"
+          ],
+          "op": [
+            "invokeaction"
+          ],
+          "cov:methodName": "POST"
+        }
+      ],
+      "safe": false,
+      "idempotent": true
+    },
+    "rotate": {
+      "title": "rotate",
+      "description": "rotates the base of the robot relative to its initial position based on the input and returns the final location",
+      "input": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 360
+      },
+      "output": {
+        "type": "object",
+        "additionalProperties": false,
+        "maxProperties": 3,
+        "properties": {
+          "x": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 180
+          },
+          "y": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 90
+          },
+          "z": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 20
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "z"
+        ]
+      },
+      "forms": [
+        {
+          "href": "/rotate",
+          "op": [
+            "invokeaction"
+          ],
+          "contentType": "application/json",
+          "htv:methodName": "POST"
+        },
+        {
+          "href": "coaps://192.168.0.101:5683/robot1/rotate",
+          "contentType": "application/cbor",
+          "security": [
+            "bearer_sc"
+          ],
+          "op": [
+            "invokeaction"
+          ],
+          "cov:methodName": "POST"
+        }
+      ],
+      "safe": false,
+      "idempotent": false
+    }
+  },
+  "events": {
+    "emergencyButton": {
+      "title": "emergencyButton",
+      "description": "emergencyButton which does not deliver any payload",
+      "forms": [
+        {
+          "op": [
+            "subscribeevent"
+          ],
+          "href": "/subscribeemergencyButton",
+          "contentType": "application/json",
+          "htv:methodName": "POST"
+        },
+        {
+          "op": [
+            "unsubscribeevent"
+          ],
+          "href": "/unsubscribeemergencyButton",
+          "contentType": "application/json",
+          "htv:methodName": "DELETE"
+        },
+        {
+          "href": "coaps://192.168.0.101:5683/robot1/subscribeemergencyButton",
+          "contentType": "application/cbor",
+          "security": [
+            "bearer_sc"
+          ],
+          "op": [
+            "subscribeevent"
+          ],
+          "cov:methodName": "POST"
+        },
+        {
+          "href": "coaps://192.168.0.101:5683/robot1/unsubscribeemergencyButton",
+          "contentType": "application/cbor",
+          "security": [
+            "bearer_sc"
+          ],
+          "op": [
+            "unsubscribeevent"
+          ],
+          "cov:methodName": "DELETE"
+        }
+      ]
+    },
+    "limitHit": {
+      "title": "position",
+      "description": "takes a number as the frequency the robot will push the position data. Then it delivers the event data as an object",
+      "oneOf": [
+        {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "maxProperties": 2,
+            "properties": {
+              "axis": {
+                "type": "string",
+                "enum": [
+                  "x",
+                  "y"
+                ]
+              },
+              "direction": {
+                "type": "string",
+                "enum": [
+                  "positive",
+                  "negative"
+                ]
+              }
+            },
+            "required": [
+              "axis",
+              "direction"
+            ]
+          }
+        },
+        {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "maxProperties": 2,
+            "properties": {
+              "axis": {
+                "type": "string",
+                "enum": [
+                  "z"
+                ]
+              },
+              "direction": {
+                "type": "string",
+                "enum": [
+                  "positive"
+                ]
+              }
+            },
+            "required": [
+              "axis",
+              "direction"
+            ]
+          }
+        }
+      ],
+      "forms": [
+        {
+          "op": [
+            "subscribeevent"
+          ],
+          "href": "/subscribelimitHit",
+          "contentType": "application/json",
+          "htv:methodName": "POST"
+        },
+        {
+          "op": [
+            "unsubscribeevent"
+          ],
+          "href": "/unsubscribelimitHit",
+          "contentType": "application/json",
+          "htv:methodName": "DELETE"
+        },
+        {
+          "href": "coaps://192.168.0.101:5683/robot1/subscribelimitHit",
+          "contentType": "application/cbor",
+          "security": [
+            "bearer_sc"
+          ],
+          "op": [
+            "subscribeevent"
+          ],
+          "cov:methodName": "POST"
+        },
+        {
+          "href": "coaps://192.168.0.101:5683/robot1/unsubscribelimitHit",
+          "contentType": "application/cbor",
+          "security": [
+            "bearer_sc"
+          ],
+          "op": [
+            "unsubscribeevent"
+          ],
+          "cov:methodName": "DELETE"
+        }
+      ]
+    }
+  }
+}

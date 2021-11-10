@@ -1,0 +1,65 @@
+[
+  {
+    "interactionCounter": 1,
+    "operation": "readproperty",
+    "affordance": {
+      "type": "property",
+      "name": "property affordance"
+    },
+    "payload": 47,
+    "recipient": {
+      "type": "thing",
+      "thingId": "de:tum:ei:esi:fp:coffee:1-4",
+      "thingTitle": "Virtual-Coffee-Machine_1_4"
+    },
+    "messageId": 1,
+    "timeStamp": "2021-06-30T18:58:36.102Z"
+  },
+  {
+    "interactionCounter": 2,
+    "operation": "readproperty",
+    "affordance": {
+      "type": "property",
+      "name": "property affordance"
+    },
+    "payload": 58,
+    "recipient": {
+      "type": "thing",
+      "thingId": "de:tum:ei:esi:fp:coffee:1-4",
+      "thingTitle": "Virtual-Coffee-Machine_1_4"
+    },
+    "messageId": 2,
+    "timeStamp": "2021-06-30T18:58:36.119Z"
+  },
+  {
+    "interactionCounter": 3,
+    "operation": "readproperty",
+    "affordance": {
+      "type": "property",
+      "name": "property affordance"
+    },
+    "payload": 26,
+    "recipient": {
+      "type": "thing",
+      "thingId": "de:tum:ei:esi:fp:coffee:1-4",
+      "thingTitle": "Virtual-Coffee-Machine_1_4"
+    },
+    "messageId": 3,
+    "timeStamp": "2021-06-30T18:58:36.134Z"
+  },
+  {
+    "interactionCounter": 4,
+    "operation": "invokeaction",
+    "affordance": {
+      "type": "action",
+      "name": "action affordance"
+    },
+    "recipient": {
+      "type": "thing",
+      "thingId": "de:tum:ei:esi:fp:coffee:1-4",
+      "thingTitle": "Virtual-Coffee-Machine_1_4"
+    },
+    "messageId": 4,
+    "timeStamp": "2021-06-30T18:58:36.155Z"
+  }
+]

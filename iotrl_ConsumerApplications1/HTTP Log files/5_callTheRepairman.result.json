@@ -1,0 +1,33 @@
+[
+  {
+    "interactionCounter": 1,
+    "operation": "subscribeevent",
+    "affordance": {
+      "type": "event",
+      "name": "event affordance"
+    },
+    "payload": "sunt mollit quis commodo",
+    "recipient": {
+      "type": "thing",
+      "thingId": "de:tum:ei:esi:fp:coffee:1-5",
+      "thingTitle": "Virtual-Coffee-Machine_1_5"
+    },
+    "messageId": 1,
+    "timeStamp": "2021-06-30T20:41:03.502Z"
+  },
+  {
+    "interactionCounter": 2,
+    "operation": "invokeaction",
+    "affordance": {
+      "type": "action",
+      "name": "action affordance"
+    },
+    "recipient": {
+      "type": "thing",
+      "thingId": "de:tum:ei:esi:fp:coffee:1-5",
+      "thingTitle": "Virtual-Coffee-Machine_1_5"
+    },
+    "messageId": 2,
+    "timeStamp": "2021-06-30T20:41:12.778Z"
+  }
+]

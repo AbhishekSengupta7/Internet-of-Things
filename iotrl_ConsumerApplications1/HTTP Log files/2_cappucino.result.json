@@ -1,0 +1,15 @@
+{
+    "interactionCounter": 1,
+    "operation": "invokeaction",
+    "affordance": {
+      "type": "action",
+      "name": "action affordance"
+    },
+    "recipient": {
+      "type": "thing",
+      "thingId": "de:tum:ei:esi:fp:coffee:1-2",
+      "thingTitle": "Virtual-Coffee-Machine_1_2"
+    },
+    "messageId": 1,
+    "timeStamp": "2021-06-30T21:18:23.770Z"
+  }

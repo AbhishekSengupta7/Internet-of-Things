@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Temperature sensors",
+  "anyOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Temperature in Celsius",
+      "maxProperties":2,
+      "properties": {
+        "unit": {
+          "description": "Scale of temperature measurement",
+          "type": "string",
+          "enum": [
+            "Celsius"
+          ]
+        },
+        "value": {
+          "description": "Temperature value in celsius",
+          "type": "number",
+          "minimum": 50,
+          "maximum": 150
+        }
+      },
+      "required": [
+        "unit",
+        "value"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Temperature in Fahrenheit",
+      "maxProperties":2,
+      "properties": {
+        "unit": {
+          "description": "Scale of temperature measurement",
+          "type": "string",
+          "enum": [
+            "Fahrenheit"
+          ]
+        },
+        "value": {
+          "description": "Temperature value in Fahrenheit",
+          "type": "number",
+          "minimum": 122,
+          "maximum": 302
+        }
+      },
+      "required": [
+        "unit",
+        "value"
+      ]
+    }
+  ]
+}

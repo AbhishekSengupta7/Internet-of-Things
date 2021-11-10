@@ -1,0 +1,42 @@
+{
+  "@context": "https://www.w3.org/2019/wot/td/v1",
+  "title": "targetSpeed and currentSpeed",
+  "events": {
+    "emergencyButton": {
+      "title": "emergencyButton",
+      "description": "emergencyButton which does not deliver any payload"
+    },
+    "position": {
+      "title": "position",
+      "description": "takes a number as the frequency the robot will push the position data. Then it delivers the event data as an object",
+      "type": "number",
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "maxProperties": 3,
+        "properties": {
+          "x": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 180
+          },
+          "y": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 90
+          },
+          "z": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 20
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "z"
+        ]
+      }
+    }
+  }
+}

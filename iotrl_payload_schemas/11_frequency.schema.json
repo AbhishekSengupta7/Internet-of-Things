@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "An array containing values recorded by the sensor",
+  "type": "array",
+  "minItems": 48,
+  "maxItems": 48,
+  "items": {
+    "type": "number",
+    "anyOf": [
+      {
+        "minimum": 0,
+        "maximum": 24000,
+        "exclusiveMaximum": true,
+
+      },
+      {
+        "minimum": 26000,
+        "exclusiveMinimum": true
+      }
+    ]
+  }
+}

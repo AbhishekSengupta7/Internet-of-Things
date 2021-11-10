@@ -1,0 +1,11 @@
+{
+  "@context": "https://www.w3.org/2019/wot/td/v1",
+  "title": "No Security",
+  "description": "Interaction affordances with no security",
+  "securityDefinitions": {
+    "nosec_sc": {
+      "scheme": "nosec"
+    }
+  },
+  "security": "nosec_sc"
+}

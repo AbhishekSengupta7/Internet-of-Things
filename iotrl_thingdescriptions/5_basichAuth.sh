@@ -1,0 +1,1 @@
+curl --user "hello:world" https://example.com

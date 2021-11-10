@@ -1,0 +1,15 @@
+{
+  "@context": "https://www.w3.org/2019/wot/td/v1",
+  "title": "links",
+  "description": "Related links",
+  "links": [
+    {
+      "rel": "about",
+      "href": "https://example.com/context"
+    },
+    {
+      "rel": "self",
+      "href": "https://example.com/self"
+    }
+  ]
+}
